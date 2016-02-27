@@ -49,7 +49,17 @@
                         </div>
                         <div class="headerMenu">
                             <%-- DXCOMMENT: Configure the header menu --%>
-<dx:ASPxMenu ID="ASPxMenu1" runat="server" ItemAutoWidth="False" Width="100%" Theme="MetropolisBlue">
+<dx:ASPxMenu ID="ASPxMenu1" runat="server" ItemAutoWidth="False" Width="100%" >
+    <Items>
+        <dx:MenuItem Text="Home" NavigateUrl="~/Default.aspx">
+        </dx:MenuItem>
+        <dx:MenuItem Text="Edit">
+            <Items>
+                <dx:MenuItem NavigateUrl="~/CategoryEdit.aspx" Text="Category">
+                </dx:MenuItem>
+            </Items>
+        </dx:MenuItem>
+    </Items>
     <Border BorderWidth="0px" />
     <BorderTop BorderWidth="1px" />
 </dx:ASPxMenu>

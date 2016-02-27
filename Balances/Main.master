@@ -62,7 +62,7 @@
                     <dx:SplitterContentControl>
                         <div class="leftPanel">
                             <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
-                            <dx:ASPxCallbackPanel ID="NavCallbackPanel" runat="server" Width="200px" ClientInstanceName="NavCallbackPanel" OnCallback="NavCallbackPanel_Callback">
+                            <dx:ASPxCallbackPanel ID="NavCallbackPanel" runat="server" Width="100%" ClientInstanceName="NavCallbackPanel" OnCallback="NavCallbackPanel_Callback">
                                 <PanelCollection>
                                     <dx:PanelContent runat="server">
                                        <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%">
