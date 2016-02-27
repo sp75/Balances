@@ -60,7 +60,7 @@
 
 
         <dx:ASPxGridView ID="PublicationGridView" runat="server" AutoGenerateColumns="False" ClientInstanceName="PublicationGridView"
-            Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno">
+            Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno" OnCustomCallback="PublicationGridView_CustomCallback">
             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
             <Settings VerticalScrollBarMode="Auto" />
             <ClientSideEvents Init="OnInit" EndCallback="OnEndCallback" />
@@ -187,7 +187,10 @@
     </div>
 
 
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Publication" OnInserting="EntityDataSource1_Inserting" OrderBy="it.PublishedDate desc" Where="" EntityTypeFilter="" Select="">
+    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Publication" OnInserting="EntityDataSource1_Inserting" OrderBy="it.PublishedDate desc" Where="" AutoGenerateWhereClause="True">
+        <WhereParameters>
+            <asp:Parameter DbType="Int32" Name="CategoryId" />
+        </WhereParameters>
 </asp:EntityDataSource>
 <asp:EntityDataSource ID="EntityDataSource2" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Category">
 </asp:EntityDataSource>

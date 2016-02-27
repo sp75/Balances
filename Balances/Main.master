@@ -25,8 +25,15 @@
                     <dx:SplitterContentControl>
                         <div class="leftPanel">
                             <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
-<dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%" DataSourceID="XmlDataSourceLeft">
+<dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%">
     <Border BorderWidth="0px" />
+    <ClientSideEvents ItemClick="function(s, e) {
+    PublicationGridView.PerformCallback(e.item.GetText());	
+}" />
+    <Groups>
+        <dx:NavBarGroup>
+        </dx:NavBarGroup>
+    </Groups>
     <Paddings Padding="0px" />
 </dx:ASPxNavBar>
 

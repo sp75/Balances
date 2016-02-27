@@ -11,20 +11,11 @@ namespace Balances {
     {
         protected void Page_Load(object sender, EventArgs e) 
         {
+          //  EntityDataSource1.WhereParameters["CategoryId"].DefaultValue = 2.ToString();
+
             if(IsCallback)
             {
               
-            }
-
-            using (BalancesEntities db = new BalancesEntities())
-            {
-                var item = db.Publication.Find(2);
-                if (item != null)
-                {
-                    item.ImageUrl = "";
-                 
-                }
-                db.SaveChanges();
             }
 
         }
@@ -74,6 +65,21 @@ namespace Balances {
 
         protected void ASPxUploadControl1_FilesUploadComplete(object sender, DevExpress.Web.FilesUploadCompleteEventArgs e)
         {
+           
+        }
+
+        protected void PublicationGridView_CustomCallback(object sender, DevExpress.Web.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            using (BalancesEntities db = new BalancesEntities())
+            {
+                var cat = Enumerable.FirstOrDefault(db.Category.Where(w => w.Name == e.Parameters));
+                if(cat!=null)
+                {
+                    EntityDataSource1.WhereParameters["CategoryId"].DefaultValue = cat.Id.ToString();
+                    PublicationGridView.DataBind();
+                }
+            }
+
            
         }
     }
