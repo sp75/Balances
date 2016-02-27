@@ -2,6 +2,43 @@
 
 <%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <dx:ASPxPopupControl ID="NewCatPopup" runat="server" Height="140px" Width="421px" HeaderText="New Category" ClientInstanceName="NewCatPopup" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter">
+        <ContentCollection>
+<dx:PopupControlContentControl runat="server">
+    <table style="width: 100%; height: 100%">
+        <tr>
+            <td style="width: 84px; height: 55px">
+                <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Name">
+                </dx:ASPxLabel>
+            </td>
+            <td style="height: 55px">
+                <div>
+                <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="100%" Height="25px" Theme="Metropolis">
+                </dx:ASPxTextBox>
+                    </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="width: 84px"></td>
+            <td>
+               <div style="float: right">
+                <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Ok" AutoPostBack="False">
+                    <ClientSideEvents Click="function(s, e) {
+	NewCatPopup.Hide();
+               NavCallbackPanel.PerformCallback('new_item')
+}" />
+                </dx:ASPxButton>
+                   </div>
+               
+            </td>
+
+        </tr>
+
+    </table>
+            </dx:PopupControlContentControl>
+</ContentCollection>
+    </dx:ASPxPopupControl>
     <dx:ASPxSplitter ID="ContentSplitter" runat="server" Width="100%" Height="100%" FullscreenMode="True">
                 <ClientSideEvents PaneResized="function(s, e) { 
             if(window.ASPxGridView1 && e.pane.name == 'ContentCenter')
@@ -25,17 +62,39 @@
                     <dx:SplitterContentControl>
                         <div class="leftPanel">
                             <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
-<dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%">
-    <Border BorderWidth="0px" />
-    <ClientSideEvents ItemClick="function(s, e) {
+                            <dx:ASPxCallbackPanel ID="NavCallbackPanel" runat="server" Width="200px" ClientInstanceName="NavCallbackPanel" OnCallback="NavCallbackPanel_Callback">
+                                <PanelCollection>
+                                    <dx:PanelContent runat="server">
+                                       <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%">
+                                <Border BorderWidth="0px" />
+                                <ClientSideEvents ItemClick="function(s, e) {
     PublicationGridView.PerformCallback(e.item.GetText());	
 }" />
-    <Groups>
-        <dx:NavBarGroup>
-        </dx:NavBarGroup>
-    </Groups>
-    <Paddings Padding="0px" />
-</dx:ASPxNavBar>
+                                <Groups>
+                                    <dx:NavBarGroup>
+                                        <HeaderTemplate>
+                                            <div style="float: left">
+
+                                                <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Category">
+                                                </dx:ASPxLabel>
+                                            </div>
+                                            <div style="float: right">
+
+                                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" Text="Add">
+                                                    <ClientSideEvents Click="function(s, e) {
+	NewCatPopup.Show();
+}" />
+                                                </dx:ASPxHyperLink>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </dx:NavBarGroup>
+                                </Groups>
+                                <Paddings Padding="0px" />
+                            </dx:ASPxNavBar>
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxCallbackPanel>
+                            
 
                         </div>
                     </dx:SplitterContentControl>
@@ -59,9 +118,7 @@
         </Panes>
     </dx:ASPxSplitter>
     
-<%-- DXCOMMENT: Configure a datasource for the left panel's ASPxNavBar --%>
-<asp:XmlDataSource ID="XmlDataSourceLeft" runat="server" DataFile="~/App_Data/SideMenu.xml"
-    XPath="/menu/*"></asp:XmlDataSource>
+<%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
 
     
 </asp:Content>
