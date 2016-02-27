@@ -20,7 +20,7 @@
             PublicationGridView.SetHeight(height - 200);
         }
     </script>
-    <div style="margin: 5px">
+    <div style="margin: 10px 5px 5px 5px">
 
         <div style="padding-top: 10px; height: 45px; margin-bottom: 20px;">
             <table class="BottomMargin" width="100%">
@@ -117,7 +117,12 @@
                 <dx:GridViewDataImageColumn FieldName="ImageUrl" VisibleIndex="11" Caption="Image" Width="80px">
                     <PropertiesImage ImageHeight="50px">
                     </PropertiesImage>
-
+ <DataItemTemplate>
+                <a href='<%#Eval("ImageUrl")%>' target="_blank">
+                <dx:ASPxImage ID="ASPxImage1" runat="server" Height="50" ImageUrl='<%#Eval("ImageUrl") %>' ShowLoadingImage="true" >
+                </dx:ASPxImage>
+                </a>
+            </DataItemTemplate>
 
                     <EditItemTemplate>
                         <dx:ASPxUploadControl ID="ASPxUploadControl1" runat="server" OnFileUploadComplete="ASPxUploadControl1_FileUploadComplete" ShowProgressPanel="True" ShowUploadButton="True" Theme="Metropolis" UploadMode="Auto" Width="280px" ClientInstanceName="ASPxUploadControl1" OnFilesUploadComplete="ASPxUploadControl1_FilesUploadComplete">
