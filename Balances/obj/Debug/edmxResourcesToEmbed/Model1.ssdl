@@ -23,9 +23,9 @@
     <Property Name="LifeTime" Type="int" />
     <Property Name="Expired" Type="bit" />
     <Property Name="ImageUrl" Type="nvarchar" MaxLength="150" />
-    <Property Name="CategoryId" Type="uniqueidentifier" />
     <Property Name="Department" Type="nvarchar" MaxLength="100" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="CategoryId" Type="int" />
   </EntityType>
   <EntityContainer Name="BalancesModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />

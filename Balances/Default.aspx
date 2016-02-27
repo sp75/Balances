@@ -8,6 +8,7 @@
         }
         function OnEndCallback(s, e) {
             AdjustSize();
+            ASPxTextBox1.SetValue('');
         }
         function OnControlsInitialized(s, e) {
             ASPxClientUtils.AttachEventToElement(window, "resize", function (evt) {
@@ -37,7 +38,12 @@
                             </ClearButton>
                         </dx:ASPxButtonEdit>
                     </td>
-                    <td></td>
+                    <td>
+                        
+    <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" ClientInstanceName="ASPxTextBox1" Width="170px" ClientVisible="False">
+    </dx:ASPxTextBox>
+                                
+                    </td>
                     <td style="width: 4px"><span class="dxtv-ndTxt dx-vam" style="font-size: x-large">
                         <dx:ASPxButton ID="btnXlsExport" runat="server" Text="New Post" Theme="Moderno" UseSubmitBehavior="False" AllowFocus="False" AutoPostBack="False">
                             <ClientSideEvents Click="function(s, e) {
@@ -56,13 +62,13 @@
         <dx:ASPxGridView ID="PublicationGridView" runat="server" AutoGenerateColumns="False" ClientInstanceName="PublicationGridView"
             Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno">
             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-            <Settings ShowGroupPanel="True" />
+            <Settings VerticalScrollBarMode="Auto" />
             <ClientSideEvents Init="OnInit" EndCallback="OnEndCallback" />
             <SettingsPager PageSize="20">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
-            <Settings VerticalScrollBarMode="Auto" />
+            <Settings ShowGroupPanel="True" />
             <SettingsBehavior AllowFocusedRow="True" AutoExpandAllGroups="True" ColumnResizeMode="NextColumn" ConfirmDelete="True" EnableRowHotTrack="True" />
             <SettingsCommandButton>
                 <EditButton ButtonType="Image">
@@ -73,7 +79,7 @@
                 </DeleteButton>
             </SettingsCommandButton>
             <SettingsPopup>
-                <EditForm AllowResize="True" HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
+                <EditForm AllowResize="True" HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="1000px" />
             </SettingsPopup>
             <SettingsSearchPanel CustomEditorID="shTextBox" />
             <Columns>
@@ -87,36 +93,67 @@
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="FirstName" VisibleIndex="6">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Description" VisibleIndex="7">
-                </dx:GridViewDataTextColumn>
-                <dx:GridViewDataCheckColumn FieldName="Active" VisibleIndex="8">
+                <dx:GridViewDataCheckColumn FieldName="Active" VisibleIndex="8" Width="60px">
+                    <EditFormSettings VisibleIndex="3" />
                 </dx:GridViewDataCheckColumn>
                 <dx:GridViewDataDateColumn FieldName="PublishedDate" VisibleIndex="1">
                     <EditFormSettings Visible="False" />
                 </dx:GridViewDataDateColumn>
                 <dx:GridViewDataTextColumn FieldName="MaterialName" VisibleIndex="4">
-                </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="LifeTime" Visible="False" VisibleIndex="10">
-                    <EditFormSettings Visible="True" />
+                    <EditFormSettings VisibleIndex="0" />
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataComboBoxColumn Caption="Category" FieldName="CategoryId" VisibleIndex="2">
                     <PropertiesComboBox DataSourceID="EntityDataSource2" TextField="Name" ValueField="Id">
                     </PropertiesComboBox>
+                    <EditFormSettings VisibleIndex="2" />
                 </dx:GridViewDataComboBoxColumn>
                 <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="12">
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataSpinEditColumn FieldName="Quantity" VisibleIndex="9">
-                    <PropertiesSpinEdit DisplayFormatString="g">
+                    <PropertiesSpinEdit DisplayFormatString="g" Width="100px">
                     </PropertiesSpinEdit>
+                    <EditFormSettings VisibleIndex="1" />
                 </dx:GridViewDataSpinEditColumn>
-                <dx:GridViewDataImageColumn FieldName="ImageUrl" VisibleIndex="11">
+                <dx:GridViewDataImageColumn FieldName="ImageUrl" VisibleIndex="11" Caption="Image" Width="80px">
                     <PropertiesImage ImageHeight="50px">
                     </PropertiesImage>
+
+
+                    <EditItemTemplate>
+                        <dx:ASPxUploadControl ID="ASPxUploadControl1" runat="server" OnFileUploadComplete="ASPxUploadControl1_FileUploadComplete" ShowProgressPanel="True" ShowUploadButton="True" Theme="Metropolis" UploadMode="Auto" Width="280px" ClientInstanceName="ASPxUploadControl1" OnFilesUploadComplete="ASPxUploadControl1_FilesUploadComplete">
+                            <ClientSideEvents FileUploadComplete="function(s, e) {
+	ASPxTextBox1.SetValue(e.callbackData)
+}" />
+                            <AdvancedModeSettings EnableDragAndDrop="True" EnableMultiSelect="True">
+                                <FileListItemStyle CssClass="pending dxucFileListItem">
+                                </FileListItemStyle>
+                            </AdvancedModeSettings>
+                        </dx:ASPxUploadControl>
+                    </EditItemTemplate>
+
+
                 </dx:GridViewDataImageColumn>
                 <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="13" Width="60px">
                 </dx:GridViewCommandColumn>
                 <dx:GridViewDataTextColumn FieldName="Department" VisibleIndex="3">
+                    <EditFormSettings VisibleIndex="4" />
                 </dx:GridViewDataTextColumn>
+                <dx:GridViewDataComboBoxColumn FieldName="LifeTime" Visible="False" VisibleIndex="10">
+                    <PropertiesComboBox ValueType="System.Int32" Width="100px">
+                        <Items>
+                            <dx:ListEditItem Selected="True" Text="5" Value="5" />
+                            <dx:ListEditItem Text="10" Value="10" />
+                            <dx:ListEditItem Text="20" Value="20" />
+                            <dx:ListEditItem Text="30" Value="30" />
+                        </Items>
+                    </PropertiesComboBox>
+                    <EditFormSettings Visible="True" VisibleIndex="5" />
+                </dx:GridViewDataComboBoxColumn>
+                <dx:GridViewDataMemoColumn FieldName="Description" VisibleIndex="7">
+                    <PropertiesMemoEdit Height="100px">
+                    </PropertiesMemoEdit>
+                    <EditFormSettings ColumnSpan="2" />
+                </dx:GridViewDataMemoColumn>
             </Columns>
             <Styles>
                 <Header Wrap="True" ForeColor="#333333">
@@ -150,7 +187,7 @@
     </div>
 
 
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Publication" OnInserting="EntityDataSource1_Inserting">
+    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Publication" OnInserting="EntityDataSource1_Inserting" OrderBy="it.PublishedDate desc" Where="" EntityTypeFilter="" Select="">
 </asp:EntityDataSource>
 <asp:EntityDataSource ID="EntityDataSource2" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Category">
 </asp:EntityDataSource>

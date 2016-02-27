@@ -25,7 +25,7 @@ namespace Balances
         public Nullable<int> LifeTime { get; set; }
         public Nullable<bool> Expired { get; set; }
         public string ImageUrl { get; set; }
-        public Nullable<System.Guid> CategoryId { get; set; }
+        public Nullable<int> CategoryId { get; set; }
         public string Department { get; set; }
         public string PhoneNumber { get; set; }
     }
