@@ -15,7 +15,9 @@
         </Styles>
         <Panes>
             <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="200px" MinSize="150px">
-                <PaneStyle CssClass="leftPane"></PaneStyle>
+                <PaneStyle CssClass="leftPane">
+<Paddings Padding="1px"></Paddings>
+                </PaneStyle>
                 <PaneStyle>
                     <Paddings Padding="1px" />
                 </PaneStyle>
@@ -32,7 +34,7 @@
                     </dx:SplitterContentControl>
                 </ContentCollection>
             </dx:SplitterPane>
-            <dx:SplitterPane Name="ContentCenter" ScrollBars="Auto">
+            <dx:SplitterPane Name="ContentCenter">
                 <PaneStyle CssClass="contentPane"></PaneStyle>
                 <Separator Visible="True">
                     <SeparatorStyle>
