@@ -187,7 +187,7 @@
     </div>
 
 
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Publication" OnInserting="EntityDataSource1_Inserting" OrderBy="it.PublishedDate desc" Where="" AutoGenerateWhereClause="True">
+    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Publication" OnInserting="EntityDataSource1_Inserting" OrderBy="it.PublishedDate desc" Where="it.Expired = 0 and  (it.CategoryId = @CategoryId or @CategoryId is null)" EntityTypeFilter="" Select="">
         <WhereParameters>
             <asp:Parameter DbType="Int32" Name="CategoryId" />
         </WhereParameters>

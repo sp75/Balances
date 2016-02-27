@@ -25,8 +25,8 @@
           <Property Name="PublishedDate" Type="datetime" />
           <Property Name="Quantity" Type="numeric" Precision="18" Scale="2" />
           <Property Name="MaterialName" Type="nvarchar" MaxLength="500" />
-          <Property Name="LifeTime" Type="int" />
-          <Property Name="Expired" Type="bit" />
+          <Property Name="LifeTime" Type="int" Nullable="false" />
+          <Property Name="Expired" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="ImageUrl" Type="nvarchar" MaxLength="150" />
           <Property Name="Department" Type="nvarchar" MaxLength="100" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
@@ -64,12 +64,12 @@
           <Property Name="PublishedDate" Type="DateTime" Precision="3" />
           <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="MaterialName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="LifeTime" Type="Int32" />
-          <Property Name="Expired" Type="Boolean" />
+          <Property Name="LifeTime" Type="Int32" Nullable="false" />
+          <Property Name="Expired" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ImageUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CategoryId" Type="Int32" />
           <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -89,9 +89,9 @@
           <EntitySetMapping Name="Publication">
             <EntityTypeMapping TypeName="BalancesModel.Publication">
               <MappingFragment StoreEntitySet="Publication">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="Expired" ColumnName="Expired" />
                 <ScalarProperty Name="LifeTime" ColumnName="LifeTime" />

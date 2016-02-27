@@ -27,6 +27,8 @@ namespace Balances {
             {
                 publication.Active = true;
                 publication.PublishedDate = DateTime.Now;
+               // publication.Expired = false;
+
                 if(!String.IsNullOrEmpty(  ASPxTextBox1.Text))
                 {
                     publication.ImageUrl = ASPxTextBox1.Text;

@@ -13,9 +13,9 @@
     <EntitySetMapping Name="Publication">
       <EntityTypeMapping TypeName="BalancesModel.Publication">
         <MappingFragment StoreEntitySet="Publication">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Department" ColumnName="Department" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="Expired" ColumnName="Expired" />
           <ScalarProperty Name="LifeTime" ColumnName="LifeTime" />

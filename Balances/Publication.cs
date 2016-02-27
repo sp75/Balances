@@ -22,11 +22,11 @@ namespace Balances
         public Nullable<System.DateTime> PublishedDate { get; set; }
         public Nullable<decimal> Quantity { get; set; }
         public string MaterialName { get; set; }
-        public Nullable<int> LifeTime { get; set; }
-        public Nullable<bool> Expired { get; set; }
+        public int LifeTime { get; set; }
+        public int Expired { get; set; }
         public string ImageUrl { get; set; }
-        public Nullable<int> CategoryId { get; set; }
         public string Department { get; set; }
         public string PhoneNumber { get; set; }
+        public Nullable<int> CategoryId { get; set; }
     }
 }

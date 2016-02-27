@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="7627b518a75243268d7bed41fff96216" Name="Diagram1">
         <EntityTypeShape EntityType="BalancesModel.Category" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BalancesModel.Publication" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BalancesModel.Publication" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

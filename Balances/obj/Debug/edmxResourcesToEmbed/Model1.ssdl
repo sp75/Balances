@@ -20,8 +20,8 @@
     <Property Name="PublishedDate" Type="datetime" />
     <Property Name="Quantity" Type="numeric" Precision="18" Scale="2" />
     <Property Name="MaterialName" Type="nvarchar" MaxLength="500" />
-    <Property Name="LifeTime" Type="int" />
-    <Property Name="Expired" Type="bit" />
+    <Property Name="LifeTime" Type="int" Nullable="false" />
+    <Property Name="Expired" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="ImageUrl" Type="nvarchar" MaxLength="150" />
     <Property Name="Department" Type="nvarchar" MaxLength="100" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
