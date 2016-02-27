@@ -62,13 +62,13 @@
         <dx:ASPxGridView ID="PublicationGridView" runat="server" AutoGenerateColumns="False" ClientInstanceName="PublicationGridView"
             Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno" OnCustomCallback="PublicationGridView_CustomCallback">
             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-            <Settings VerticalScrollBarMode="Auto" />
+            <Settings ShowGroupPanel="True" />
             <ClientSideEvents Init="OnInit" EndCallback="OnEndCallback" />
             <SettingsPager PageSize="20">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
-            <Settings ShowGroupPanel="True" />
+            <Settings VerticalScrollBarMode="Auto" />
             <SettingsBehavior AllowFocusedRow="True" AutoExpandAllGroups="True" ColumnResizeMode="NextColumn" ConfirmDelete="True" EnableRowHotTrack="True" />
             <SettingsCommandButton>
                 <EditButton ButtonType="Image">
@@ -110,7 +110,7 @@
                 <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="12">
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataSpinEditColumn FieldName="Quantity" VisibleIndex="9">
-                    <PropertiesSpinEdit DisplayFormatString="g" Width="100px">
+                    <PropertiesSpinEdit DisplayFormatString="g" Width="100px" MaxValue="10000000" MinValue="1">
                     </PropertiesSpinEdit>
                     <EditFormSettings VisibleIndex="1" />
                 </dx:GridViewDataSpinEditColumn>
@@ -141,10 +141,11 @@
                 <dx:GridViewDataComboBoxColumn FieldName="LifeTime" Visible="False" VisibleIndex="10">
                     <PropertiesComboBox ValueType="System.Int32" Width="100px">
                         <Items>
-                            <dx:ListEditItem Selected="True" Text="5" Value="5" />
+                            <dx:ListEditItem Text="5" Value="5" />
                             <dx:ListEditItem Text="10" Value="10" />
                             <dx:ListEditItem Text="20" Value="20" />
                             <dx:ListEditItem Text="30" Value="30" />
+                            <dx:ListEditItem Text="60" Value="60" />
                         </Items>
                     </PropertiesComboBox>
                     <EditFormSettings Visible="True" VisibleIndex="5" />
