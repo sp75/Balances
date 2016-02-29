@@ -12,7 +12,7 @@
             width: 252px;
         }
         .auto-style2 {
-            width: 35%;
+            width: 30%;
         }
     </style>
     <script type="text/javascript">
@@ -227,7 +227,7 @@
 </asp:EntityDataSource>
     
      <dx:ASPxPopupControl ID="popup" ClientInstanceName="popup" runat="server" AllowDragging="true"
-        PopupHorizontalAlign="WindowCenter" HeaderText="Photo & Notes" AllowResize="True" PopupVerticalAlign="WindowCenter" Width="800px" Height="500px">
+        PopupHorizontalAlign="WindowCenter" HeaderText="Photo & Notes" AllowResize="True" PopupVerticalAlign="WindowCenter" Width="1000px" Height="500px">
         <ContentCollection>
             <dx:PopupControlContentControl runat="server">
                 <dx:ASPxCallbackPanel ID="callbackPanel" ClientInstanceName="callbackPanel" runat="server"
