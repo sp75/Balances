@@ -227,7 +227,7 @@
 </asp:EntityDataSource>
     
      <dx:ASPxPopupControl ID="popup" ClientInstanceName="popup" runat="server" AllowDragging="true"
-        PopupHorizontalAlign="OutsideRight" HeaderText="Photo & Notes" Width="800px">
+        PopupHorizontalAlign="WindowCenter" HeaderText="Photo & Notes" AllowResize="True" PopupVerticalAlign="WindowCenter" Width="800px" Height="500px">
         <ContentCollection>
             <dx:PopupControlContentControl runat="server">
                 <dx:ASPxCallbackPanel ID="callbackPanel" ClientInstanceName="callbackPanel" runat="server"
