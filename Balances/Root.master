@@ -27,7 +27,7 @@
                     <dx:SplitterContentControl ID="SplitterContentControl1" runat="server">
                         <div class="headerTop">
                             <div class="templateTitle">
-                                <a id="TitleLink" href="~/" runat="server">Balances</a>
+                                <a id="TitleLink" href="~/" runat="server">MTF Office Supplies</a>
                             </div>
                             <div class="loginControl">
                                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false" Visible="False">
