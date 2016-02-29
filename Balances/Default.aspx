@@ -28,7 +28,7 @@
                     <td style="padding-right: 4px">
                         <img src="/Images/orders.png" /></td>
                     <td style="padding-left: 15px; text-align: right;" nowrap="nowrap">
-                        <span style="font-size: x-large">Search</span>
+                        <span style="font-size: x-large">Catalog</span>
                     </td>
                     <td style="padding-bottom: 15px; padding-right: 15px;">&nbsp;</td>
 
