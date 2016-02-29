@@ -81,8 +81,20 @@ namespace Balances {
                     PublicationGridView.DataBind();
                 }
             }
-
            
         }
+
+        protected void callbackPanel_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
+        {
+
+            using (BalancesEntities db = new BalancesEntities())
+            {
+                int id = Convert.ToInt32(e.Parameter);
+                var publication = db.Publication.Single(em => em.Id == id);
+                ASPxImage1.ImageUrl = publication.ImageUrl;
+                litText.Text = publication.Description;
+            }
+        }
+            
     }
 }
