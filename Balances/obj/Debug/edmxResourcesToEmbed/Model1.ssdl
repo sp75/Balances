@@ -15,7 +15,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LastName" Type="nvarchar" MaxLength="100" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-    <Property Name="Description" Type="nchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Active" Type="bit" />
     <Property Name="PublishedDate" Type="datetime" />
     <Property Name="Quantity" Type="numeric" Precision="18" Scale="2" />

@@ -19,7 +19,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Active" Type="Boolean" />
     <Property Name="PublishedDate" Type="DateTime" Precision="3" />
     <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />

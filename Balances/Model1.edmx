@@ -20,7 +20,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="100" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Description" Type="nchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Active" Type="bit" />
           <Property Name="PublishedDate" Type="datetime" />
           <Property Name="Quantity" Type="numeric" Precision="18" Scale="2" />
@@ -59,7 +59,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" />
           <Property Name="PublishedDate" Type="DateTime" Precision="3" />
           <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />

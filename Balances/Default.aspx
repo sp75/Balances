@@ -2,6 +2,19 @@
 
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
+    <style type="text/css">
+        .InfoTable td
+        {
+            padding: 0 4px;
+            vertical-align: top;
+        }
+        .auto-style1 {
+            width: 252px;
+        }
+        .auto-style2 {
+            width: 35%;
+        }
+    </style>
     <script type="text/javascript">
         function OnInit(s, e) {
             AdjustSize();
@@ -20,6 +33,18 @@
             PublicationGridView.SetHeight(height - 200);
         }
     </script>
+    <script type="text/javascript">
+        var keyValue;
+        function OnMoreInfoClick(element, key) {
+            callbackPanel.SetContentHtml("");
+            popup.ShowAtElement(element);
+            keyValue = key;
+        }
+        function popup_Shown(s, e) {
+            callbackPanel.PerformCallback(keyValue);
+        }
+    </script>
+
     <div style="margin: 10px 5px 5px 5px">
 
         <div style="padding-top: 10px; height: 45px; margin-bottom: 20px;">
@@ -62,13 +87,13 @@
         <dx:ASPxGridView ID="PublicationGridView" runat="server" AutoGenerateColumns="False" ClientInstanceName="PublicationGridView"
             Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno" OnCustomCallback="PublicationGridView_CustomCallback">
             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-            <Settings VerticalScrollBarMode="Auto" />
+            <Settings ShowGroupPanel="True" />
             <ClientSideEvents Init="OnInit" EndCallback="OnEndCallback" />
             <SettingsPager PageSize="20">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
-            <Settings ShowGroupPanel="True" />
+            <Settings VerticalScrollBarMode="Auto" />
             <SettingsBehavior AllowFocusedRow="True" AutoExpandAllGroups="True" ColumnResizeMode="NextColumn" ConfirmDelete="True" EnableRowHotTrack="True" />
             <SettingsCommandButton>
                 <EditButton ButtonType="Image">
@@ -114,11 +139,11 @@
                     </PropertiesSpinEdit>
                     <EditFormSettings VisibleIndex="1" />
                 </dx:GridViewDataSpinEditColumn>
-                <dx:GridViewDataImageColumn FieldName="ImageUrl" VisibleIndex="11" Caption="Image" Width="80px">
+                <dx:GridViewDataImageColumn FieldName="ImageUrl" VisibleIndex="11" Caption="Photo &amp; Notes" Width="80px">
                     <PropertiesImage ImageHeight="50px">
                     </PropertiesImage>
  <DataItemTemplate>
-                <a href='<%#Eval("ImageUrl")%>' target="_blank">
+                <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">
                 <dx:ASPxImage ID="ASPxImage1" runat="server" Height="50" ImageUrl='<%#Eval("ImageUrl") %>' ShowLoadingImage="true" >
                 </dx:ASPxImage>
                 </a>
@@ -155,10 +180,10 @@
                     </PropertiesComboBox>
                     <EditFormSettings Visible="True" VisibleIndex="5" />
                 </dx:GridViewDataComboBoxColumn>
-                <dx:GridViewDataMemoColumn FieldName="Description" VisibleIndex="7">
+                <dx:GridViewDataMemoColumn FieldName="Description" VisibleIndex="7" Visible="False">
                     <PropertiesMemoEdit Height="100px">
                     </PropertiesMemoEdit>
-                    <EditFormSettings ColumnSpan="2" />
+                    <EditFormSettings ColumnSpan="2" Visible="True" />
                 </dx:GridViewDataMemoColumn>
             </Columns>
             <Styles>
@@ -200,5 +225,32 @@
 </asp:EntityDataSource>
 <asp:EntityDataSource ID="EntityDataSource2" runat="server" ConnectionString="name=BalancesEntities" DefaultContainerName="BalancesEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Category">
 </asp:EntityDataSource>
+    
+     <dx:ASPxPopupControl ID="popup" ClientInstanceName="popup" runat="server" AllowDragging="true"
+        PopupHorizontalAlign="OutsideRight" HeaderText="Photo & Notes" Width="800px">
+        <ContentCollection>
+            <dx:PopupControlContentControl runat="server">
+                <dx:ASPxCallbackPanel ID="callbackPanel" ClientInstanceName="callbackPanel" runat="server"
+                    Width="100%" Height="100px" OnCallback="callbackPanel_Callback" RenderMode="Table">
+                    <PanelCollection>
+                        <dx:PanelContent runat="server">
+                            <table class="InfoTable" style="width: 100%">
+                                <tr>
+                                    <td class="auto-style1">
+                                      <dx:ASPxImage ID="ASPxImage1" runat="server"  ShowLoadingImage="true" Width="100%" >
+                </dx:ASPxImage></td>
+                                    <td class="auto-style2">
+                                        <asp:Literal ID="litText" runat="server" Text=""></asp:Literal>
+                                    </td>
+                                </tr>
+                            </table>
+                        </dx:PanelContent>
+                    </PanelCollection>
+                </dx:ASPxCallbackPanel>
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+        <ClientSideEvents Shown="popup_Shown" />
+    </dx:ASPxPopupControl>
+    
 
 </asp:Content>
