@@ -87,13 +87,13 @@
         <dx:ASPxGridView ID="PublicationGridView" runat="server" AutoGenerateColumns="False" ClientInstanceName="PublicationGridView"
             Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno" OnCustomCallback="PublicationGridView_CustomCallback">
             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-            <Settings ShowGroupPanel="True" />
+            <Settings VerticalScrollBarMode="Auto" />
             <ClientSideEvents Init="OnInit" EndCallback="OnEndCallback" />
             <SettingsPager PageSize="20">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
-            <Settings VerticalScrollBarMode="Auto" />
+            <Settings ShowGroupPanel="True" />
             <SettingsBehavior AllowFocusedRow="True" AutoExpandAllGroups="True" ColumnResizeMode="NextColumn" ConfirmDelete="True" EnableRowHotTrack="True" />
             <SettingsCommandButton>
                 <EditButton ButtonType="Image">
@@ -124,7 +124,7 @@
                 <dx:GridViewDataDateColumn FieldName="PublishedDate" VisibleIndex="1">
                     <EditFormSettings Visible="False" />
                 </dx:GridViewDataDateColumn>
-                <dx:GridViewDataTextColumn FieldName="MaterialName" VisibleIndex="4">
+                <dx:GridViewDataTextColumn FieldName="MaterialName" VisibleIndex="4" Caption="Item Name">
                     <EditFormSettings VisibleIndex="0" />
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataComboBoxColumn Caption="Category" FieldName="CategoryId" VisibleIndex="2">
