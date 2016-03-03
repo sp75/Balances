@@ -87,13 +87,13 @@
         <dx:ASPxGridView ID="PublicationGridView" runat="server" AutoGenerateColumns="False" ClientInstanceName="PublicationGridView"
             Width="100%" DataSourceID="EntityDataSource1" KeyboardSupport="True" KeyFieldName="Id" OnRowInserting="PublicationGridView_RowInserting" EnableTheming="True" Theme="Moderno" OnCustomCallback="PublicationGridView_CustomCallback">
             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-            <Settings VerticalScrollBarMode="Auto" />
+            <Settings ShowGroupPanel="True" />
             <ClientSideEvents Init="OnInit" EndCallback="OnEndCallback" />
             <SettingsPager PageSize="20">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
-            <Settings ShowGroupPanel="True" />
+            <Settings VerticalScrollBarMode="Auto" />
             <SettingsBehavior AllowFocusedRow="True" AutoExpandAllGroups="True" ColumnResizeMode="NextColumn" ConfirmDelete="True" EnableRowHotTrack="True" />
             <SettingsCommandButton>
                 <EditButton ButtonType="Image">
@@ -168,11 +168,17 @@
                 <dx:GridViewDataTextColumn FieldName="Department" VisibleIndex="3">
                     <EditFormSettings VisibleIndex="4" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataComboBoxColumn FieldName="LifeTime" Visible="False" VisibleIndex="10">
-                    <PropertiesComboBox ValueType="System.Int32" Width="100px">
+                <dx:GridViewDataComboBoxColumn FieldName="LifeTime" Visible="False" VisibleIndex="10" Name="LifeTimeEdit">
+                    <PropertiesComboBox ValueType="System.Int32" Width="100px" ClientInstanceName="LifeTimeEdit">
+                        <ClientSideEvents Init="function(s, e) {
+    if(LifeTimeEdit.GetText()=='') 
+       {
+	LifeTimeEdit.SetValue('7');
+       }
+}" />
                         <Items>
-                            <dx:ListEditItem Text="5" Value="5" />
-                            <dx:ListEditItem Text="10" Value="10" />
+                            <dx:ListEditItem Text="7" Value="7" />
+                            <dx:ListEditItem Text="14" Value="14" />
                             <dx:ListEditItem Text="20" Value="20" />
                             <dx:ListEditItem Text="30" Value="30" />
                             <dx:ListEditItem Text="60" Value="60" />
